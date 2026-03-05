@@ -1,0 +1,121 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "speaktech-ai-response-v1",
+    "title": "AiResponsePayload",
+    "description": "SpeakTech Gemini 1.5 Flash response contract — v1.1",
+    "type": "object",
+    "required": [
+        "reply",
+        "feedback",
+        "corrected_version",
+        "phonetic_respelling",
+        "suggested_pattern",
+        "error_analysis",
+        "metrics",
+        "status"
+    ],
+    "properties": {
+        "reply": {
+            "type": "string",
+            "description": "In-character Tech Lead response, 1-2 sentences"
+        },
+        "feedback": {
+            "type": "string",
+            "description": "2-3 sentence coaching insight on the main pattern to improve"
+        },
+        "corrected_version": {
+            "type": "string",
+            "description": "Fluent, native-sounding rewrite of the full transcript at B2+ level"
+        },
+        "phonetic_respelling": {
+            "type": "string",
+            "description": "Phonetic guide for difficult words using Spanish-speaker-friendly notation"
+        },
+        "suggested_pattern": {
+            "type": "string",
+            "description": "One reusable English sentence pattern to memorize"
+        },
+        "error_analysis": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "items": {
+                "type": "object",
+                "required": [
+                    "original",
+                    "fix",
+                    "category",
+                    "pattern_logic",
+                    "severity"
+                ],
+                "properties": {
+                    "original": {
+                        "type": "string"
+                    },
+                    "fix": {
+                        "type": "string"
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "Grammar",
+                            "Vocabulary",
+                            "Pronunciation",
+                            "Fluency",
+                            "Register",
+                            "False Friend"
+                        ]
+                    },
+                    "pattern_logic": {
+                        "type": "string"
+                    },
+                    "severity": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 5,
+                        "description": "1=minor, 2=noticeable, 3=causes confusion, 4=blocks comprehension, 5=critical"
+                    }
+                }
+            }
+        },
+        "metrics": {
+            "type": "object",
+            "required": [
+                "grammar_accuracy",
+                "technical_precision",
+                "fluency_flow",
+                "native_vibe"
+            ],
+            "properties": {
+                "grammar_accuracy": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "technical_precision": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "fluency_flow": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                },
+                "native_vibe": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }
+        },
+        "status": {
+            "type": "string",
+            "enum": [
+                "perfect",
+                "warning",
+                "error"
+            ]
+        }
+    }
+}

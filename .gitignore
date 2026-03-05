@@ -1,0 +1,52 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Firebase / Google Cloud Secrets (Critical)
+firebase-admin.json
+firebase-key.json
+service-account.json
+
+# Bloqueo preventivo de archivos JSON no esenciales
+*.json
+!package.json
+!package-lock.json
+!tsconfig.json
+!next.config.json
+!project.json
+!schema.json
