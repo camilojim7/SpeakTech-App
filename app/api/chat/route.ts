@@ -57,7 +57,7 @@ function extractRetryDelay(error: unknown): number {
 async function callGemini(systemPrompt: string, userMessage: string): Promise<string> {
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '')
     const model = genAI.getGenerativeModel({
-        model: 'gemini-1.5-flash-latest',
+        model: 'gemini-2.0-flash',
         systemInstruction: systemPrompt,
         generationConfig: { responseMimeType: 'application/json' },
     })
@@ -289,7 +289,7 @@ export async function POST(request: NextRequest) {
                     structuredResponse,
                     timestamp: FieldValue.serverTimestamp(),
                     appVersion: '2.0.0',
-                    model: AI_PROVIDER === 'gemini' ? 'gemini-1.5-flash-latest' : 'claude-3-5-sonnet-20240620',
+                    model: AI_PROVIDER === 'gemini' ? 'gemini-2.0-flash' : 'claude-3-5-sonnet-20240620',
                 })
                 .then(() => console.log(`[firestore] ✓ Logged — user:${userId} provider:${AI_PROVIDER}`))
                 .catch((err: unknown) => console.error('[firestore] Log failed (non-fatal):', err))
