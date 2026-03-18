@@ -5,6 +5,9 @@ import { FieldValue } from 'firebase-admin/firestore'
 import * as fs from 'fs'
 import * as path from 'path'
 
+// ── Vercel max function duration (Hobby: 60s, Pro: 300s) ─────────────────────
+export const maxDuration = 60
+
 // ── Pro-Dataset: Tipo completo de respuesta del Orquestador ──────────────────
 export type AiResponsePayload = {
     reply: string
